@@ -1,10 +1,9 @@
 :root {
   --sky-blue-crayola: hsl(188, 64%, 60%);
   --raisin-black_90: hsla(240, 8%, 12%, 0.9);
-  --raisin-black-1: hsl(0, 0%, 100%);
-  --raisin-black-2: hsl(240, 8%, 12%);
+  --raisin-black-1: hsla(0, 0%, 100%, 0.808);
+  --raisin-black-2: hsl(0, 0%, 100%);
   --majorelle-blue: hsl(241, 77%, 63%);
-  --blue-ryb_80: hsla(241, 88%, 60%, 0.8);
   --bittersweet: hsl(0, 100%, 69%);
   --eerie-black: hsl(0, 0%, 13%);
   --ghost-white: hsl(230, 60%, 98%);
@@ -43,7 +42,7 @@
    * shadow
    */
 
-  --shadow-1: 0px 2px 50px hsla(223, 40%, 76%, 0.3);
+  --shadow-1: 0px 2px 50px hsla(223, 90%, 8%, 0.3);
   --shadow-2: 0px -2px 12px hsl(252, 29%, 93%);
   --shadow-3: 0px 4px 4px hsla(231, 20%, 49%, 0.06);
   --shadow-4: 0px 15px 30px hsla(210, 30%, 32%, 0.05);
@@ -327,7 +326,7 @@ body {
 
 .nav-open-btn {
   background-color: var(--white);
-  color: var(--eerie-black);
+  color: var(--black);
   font-size: 35px;
   padding: 10px;
   box-shadow: var(--shadow-2);
@@ -847,7 +846,7 @@ body {
 .insta-card:is(:hover, :focus-within) .card-content { opacity: 1; }
 
 .footer-bottom {
-  color: var(--white);
+  color: var(--black);
   font-size: var(--fs-8);
   padding-block: 40px;
   border-block-start: 1px solid var(--onyx);
@@ -1422,4 +1421,44 @@ body {
   .blog-card .card-title { --fs-4: 2.4rem; }
 
 }
+/**
+ * MOBILE FIRST IMPROVEMENTS
+ */
 
+@media (max-width: 374px) {
+  .logo {
+    font-size: 2.4rem;
+  }
+  
+  .nav-open-btn {
+    font-size: 24px;
+    padding: 8px;
+  }
+  
+  .navbar {
+    max-width: 280px;
+    padding: 20px;
+  }
+  
+  .navbar-link {
+    font-size: var(--fs-9);
+    padding-block: 15px;
+  }
+}
+
+/* Touch device improvements */
+@media (hover: none) and (pointer: coarse) {
+  .navbar-link:active {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+  }
+  
+  .btn:active {
+    transform: scale(0.98);
+  }
+  
+  .nav-open-btn:active,
+  .nav-close-btn:active {
+    transform: scale(0.9);
+  }
+}

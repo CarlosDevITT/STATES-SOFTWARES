@@ -52,11 +52,11 @@
           </li>
 
           <li class="navbar-item">
-            <a href="#service" class="navbar-link" data-nav-link>Services</a>
+            <a href="#service" class="navbar-link" data-nav-link>Serviços</a>
           </li>
 
           <li class="navbar-item">
-            <a href="#feature" class="navbar-link" data-nav-link>Features</a>
+            <a href="#feature" class="navbar-link" data-nav-link>Sobre Nós</a>
           </li>
 
           <li class="navbar-item">
@@ -64,7 +64,7 @@
           </li>
 
           <li class="navbar-item">
-            <a href="https://domshop15.lojavirtualnuvem.com.br/" class="navbar-link" data-nav-link>e-commerce</a>
+            <a href="https://e-commerce-dom.netlify.app/"  target="_blank"  class="navbar-link" data-nav-link>e-commerce</a>
           </li>
 
         </ul>
@@ -96,7 +96,7 @@
 
             <p class="hero-text">
               Automatize processos, melhore o atendimento e aumente suas vendas com agentes de IA personalizados. 
-              Inovações em IA para microempresas e pequenas
+              Inovações em IA para Micro e pequenas Empresas
             </p>
 
             <div class="wrapper">
@@ -109,18 +109,19 @@
               </button>
             </div>
 
+
             <ul class="social-list">
 
               <li>
-                <a href="https://www.youtube.com/@carlos_domingos.0" class="social-link" style="--color: hsl(241, 77%, 63%);">
+                <a href="https://www.facebook.com/people/StateSoft/61565731046808/" class="social-link" style="--color: hsl(241, 77%, 63%);">
                   <ion-icon name="logo-facebook"></ion-icon>
-
+                  
                   <span class="span">Facebook</span>
                 </a>
               </li>
 
               <li>
-                <a href="#" class="social-link" style="--color: hsl(0, 100%, 50%);">
+                <a href="https://www.youtube.com/@carlos_domingos.0" class="social-link" style="--color: hsl(0, 100%, 50%);">
                   <ion-icon name="logo-youtube"></ion-icon>
 
                   <span class="span">Youtube</span>
@@ -128,10 +129,10 @@
               </li>
 
               <li>
-                <a href="#" class="social-link" style="--color: hsl(203, 89%, 53%);">
+                <a href="https://diamond-ia.netlify.app/" class="social-link" style="--color: hsl(203, 89%, 53%);">
                   <ion-icon name="logo-twitter"></ion-icon>
 
-                  <span class="span">Twitter</span>
+                  <span class="span">Diamond</span>
                 </a>
               </li>
 
@@ -149,19 +150,16 @@
       <section class="section service" id="service" aria-label="serviços">
         <div class="container">
       
-          <p class="section-subtitle has-before text-center">Nossos Serviços em Tecnologia e IA</p>
-      
+          <p class="section-subtitle has-before text-center">Nossos Serviços em Tecnologia e IA</p>    
           <h2 class="h2 section-title text-center">Soluções Inteligentes para Crescimento <span class="has-before">Sustentável</span></h2>
-      
           <ul class="grid-list">
-      
             <li>
               <div class="service-card" style="--color: 174, 77%, 50%;">
                 <div class="card-icon">
                   <img src="./assets/images/service-icon-1.png" width="30" height="30" loading="lazy" alt="ícone de serviço">
                 </div>
                 <h3 class="h3">
-                  <a href="#" class="card-title">Gestão de Produtos</a>
+                  <a href="" class="card-title">Gestão de Produtos</a>
                 </h3>
               </div>
             </li>
@@ -172,7 +170,7 @@
                   <img src="./assets/images/service-icon-2.png" width="30" height="30" loading="lazy" alt="ícone de serviço">
                 </div>
                 <h3 class="h3">
-                  <a href="#" class="card-title">Desenvolvimento Web e App</a>
+                  <a href="" class="card-title">Desenvolvimento Web e App</a>
                 </h3>
               </div>
             </li>
@@ -233,7 +231,7 @@
             </li>
       
             <li>
-              <a href="#" class="link-card" style="--color: 203, 97%, 75%;">
+              <a href="https://dom-state.my.canva.site/" class="link-card" style="--color: 203, 97%, 75%;">
                 <span class="span">04 Serviços a Mais</span>
                 <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
               </a>
@@ -320,97 +318,109 @@
           </h2>
       
           <ul class="filter-list">
-      
             <li>
-              <button class="filter-btn active" data-filter-btn>Website</button>
+              <button class="filter-btn active" data-filter-btn data-filter="all">Todos</button>
             </li>
-      
             <li>
-              <button class="filter-btn" data-filter-btn>Inteligência Artificial</button>
+              <button class="filter-btn" data-filter-btn data-filter="website">Website</button>
             </li>
-      
             <li>
-              <button class="filter-btn" data-filter-btn>Aplicativos</button>
+              <button class="filter-btn" data-filter-btn data-filter="ia">Inteligência Artificial</button>
             </li>
-      
             <li>
-              <button class="filter-btn" data-filter-btn>Landing Page</button>
+              <button class="filter-btn" data-filter-btn data-filter="app">Aplicativos</button>
             </li>
-      
             <li>
-              <button class="filter-btn" data-filter-btn>E-commerce</button>
+              <button class="filter-btn" data-filter-btn data-filter="landing">Landing Page</button>
             </li>
-      
+            <li>
+              <button class="filter-btn" data-filter-btn data-filter="ecommerce">E-commerce</button>
+            </li>
           </ul>
       
           <ul class="grid-list">
       
-            <li>
+            <li data-category="ia">
               <div class="project-card">
                 <figure class="card-banner img-holder" style="--width: 835; --height: 429;">
-                  <img src="./assets/images/ DIAMOND - Virtual Assistant.png" width="835" height="429" loading="lazy" alt="Design de capa de livro" class="img-cover">
+                  <img src="./assets/images/assistant.png" width="835" height="429" loading="lazy" alt="Agente Virtual Diamond IA" class="img-cover">
                 </figure>
                 <div class="card-content">
                   <h3 class="h3">
-                    <a href="https://diamond-ia.netlify.app/" class="card-title">Agente de IA</a>
+                    <a href="https://diamond-ia.netlify.app/" class="card-title" target="_blank" rel="noopener noreferrer">Agente de IA</a>
                   </h3>
-                  <a href="https://diamond-ia.netlify.app/" class="card-tag">Suporte Técnico</a>
+                  <span class="card-tag">Inteligência Artificial</span>
                 </div>
               </div>
             </li>
       
-            <li>
+            <li data-category="ecommerce">
               <div class="project-card">
                 <figure class="card-banner img-holder" style="--width: 416; --height: 429;">
-                  <img src="./assets/images/dom.png" width="416" height="429" loading="lazy" alt="Design Gráfico" class="img-cover">
+                  <img src="./assets/images/dom.png" width="416" height="429" loading="lazy" alt="Projeto DOM e-commerce" class="img-cover">
                 </figure>
                 <div class="card-content">
                   <h3 class="h3">
-                    <a href="https://dom-state.my.canva.site/" class="card-title">DOM</a>
+                    <a href="https://dom-state.my.canva.site/" class="card-title" target="_blank" rel="noopener noreferrer">DOM</a>
                   </h3>
-                  <a href="#" class="card-tag">e-commerce</a>
+                  <span class="card-tag">E-commerce</span>
                 </div>
               </div>
             </li>
       
-            <li>
+            <li data-category="website">
               <div class="project-card">
                 <figure class="card-banner img-holder" style="--width: 416; --height: 429;">
                   <img src="./assets/images/logo2.png" width="416" height="429" loading="lazy" alt="Arte Digital 3D" class="img-cover">
                 </figure>
                 <div class="card-content">
                   <h3 class="h3">
-                    <a href="https://cal.com/carlos-domingos.0/plano-com-ia" class="card-title">Arte Digital 3D</a>
+                    <a href="https://cal.com/carlos-domingos.0/plano-com-ia" class="card-title" target="_blank" rel="noopener noreferrer">Design e Criativos</a>
                   </h3>
-                  <a href="https://cal.com/carlos-domingos.0/plano-com-ia" class="card-tag">Design</a>
+                  <span class="card-tag">Website</span>
                 </div>
               </div>
             </li>
       
-            <li>
+            <li data-category="website">
               <div class="project-card">
                 <figure class="card-banner img-holder" style="--width: 416; --height: 429;">
-                  <img src="./assets/images/ignite.jpg" width="416" height="429" loading="lazy" alt="Design de Website" class="img-cover">
+                  <img src="./assets/images/ignite.jpg" width="416" height="429" loading="lazy" alt="Design de Website Ignite" class="img-cover">
                 </figure>
                 <div class="card-content">
                   <h3 class="h3">
-                    <a href="https://ignite-restaurant-kappa.vercel.app/" class="card-title">Design de Website</a>
+                    <a href="https://ignite-restaurant-kappa.vercel.app/" class="card-title" target="_blank" rel="noopener noreferrer">Design de Website</a>
                   </h3>
-                  <a href="https://ignite-restaurant-kappa.vercel.app/" class="card-tag">Design</a>
+                  <span class="card-tag">Website</span>
                 </div>
               </div>
             </li>
       
-            <li>
+            <li data-category="app">
               <div class="project-card">
                 <figure class="card-banner img-holder" style="--width: 416; --height: 429;">
                   <img src="./assets/images/ab2.jpg" width="416" height="429" loading="lazy" alt="Design de Aplicativo Móvel" class="img-cover">
                 </figure>
                 <div class="card-content">
                   <h3 class="h3">
-                    <a href="https://xis-querencia-do-sul.netlify.app/" class="card-title">Aplicativo Móvel</a>
+                    <a href="https://xis-querencia-do-sul.netlify.app/" class="card-title" target="_blank" rel="noopener noreferrer">Aplicativo Móvel</a>
                   </h3>
-                  <a href="https://xis-querencia-do-sul.netlify.app/" class="card-tag">Design</a>
+                  <span class="card-tag">Aplicativos</span>
+                </div>
+              </div>
+            </li>
+      
+            <!-- Adicione mais projetos conforme necessário -->
+            <li data-category="landing">
+              <div class="project-card">
+                <figure class="card-banner img-holder" style="--width: 416; --height: 429;">
+                  <img src="./assets/images/romanos.jpg" width="416" height="429" loading="lazy" alt="Landing Page Exemplo" class="img-cover">
+                </figure>
+                <div class="card-content">
+                  <h3 class="h3">
+                    <a href="https://romanoss.netlify.app/" class="card-title" target="_blank" rel="noopener noreferrer">Landing Page</a>
+                  </h3>
+                  <span class="card-tag">Landing Page</span>
                 </div>
               </div>
             </li>
@@ -446,7 +456,6 @@
       
         </div>
       </section>
-  
      
       </article>
   </main>
@@ -524,76 +533,6 @@
         </li>
       </ul>
 
-      <ul class="footer-list">
-        <li>
-          <p class="footer-list-title">Postagens do Instagram</p>
-        </li>
-        <li>
-          <ul class="insta-post">
-            <li>
-              <div class="insta-card">
-                <figure class="post-banner">
-                  <img src="./assets/images/insta-post-1.jpg" width="77" height="63" loading="lazy" alt="post do instagram" class="img-cover">
-                </figure>
-                <a href="https://www.instagram.com/state_softwares/?hl=pt-br" class="card-content">
-                  <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
-                </a>
-              </div>
-            </li>
-            <li>
-              <div class="insta-card">
-                <figure class="post-banner">
-                  <img src="./assets/images/insta-post-2.jpg" width="77" height="63" loading="lazy" alt="post do instagram" class="img-cover">
-                </figure>
-                <a href="https://www.instagram.com/state_softwares/?hl=pt-br" class="card-content">
-                  <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
-                </a>
-              </div>
-            </li>
-            <li>
-              <div class="insta-card">
-                <figure class="post-banner">
-                  <img src="./assets/images/insta-post-3.jpg" width="77" height="63" loading="lazy" alt="post do instagram" class="img-cover">
-                </figure>
-                <a href="https://www.instagram.com/state_softwares/?hl=pt-br" class="card-content">
-                  <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
-                </a>
-              </div>
-            </li>
-            <li>
-              <div class="insta-card">
-                <figure class="post-banner">
-                  <img src="./assets/images/insta-post-4.jpg" width="77" height="63" loading="lazy" alt="post do instagram" class="img-cover">
-                </figure>
-                <a href="https://www.instagram.com/state_softwares/?hl=pt-br" class="card-content">
-                  <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
-                </a>
-              </div>
-            </li>
-            <li>
-              <div class="insta-card">
-                <figure class="post-banner">
-                  <img src="./assets/images/insta-post-5.jpg" width="77" height="63" loading="lazy" alt="post do instagram" class="img-cover">
-                </figure>
-                <a href="https://www.instagram.com/state_softwares/?hl=pt-br" class="card-content">
-                  <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
-                </a>
-              </div>
-            </li>
-            <li>
-              <div class="insta-card">
-                <figure class="post-banner">
-                  <img src="./assets/images/insta-post-6.jpg" width="77" height="63" loading="lazy" alt="post do instagram" class="img-cover">
-                </figure>
-                <a href="https://www.instagram.com/state_softwares/?hl=pt-br" class="card-content">
-                  <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
-                </a>
-              </div>
-            </li>
-          </ul>
-        </li>
-      </ul>
-
     </div>
 
     <div class="footer-bottom">
@@ -621,6 +560,7 @@
   </a>
 
   <script src="./assets/js/script.js" defer></script>
+  <script src="./assets/js/filter-list.js" defer></script>
   <script src="./assets/js/nvidia-effects.js" defer></script>
 
   <!-- 
@@ -630,5 +570,4 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
-
 </html>

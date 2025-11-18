@@ -12,6 +12,12 @@
 
 ---
 
+<div align="center">
+<img src="readme-images/desktop.png" alt="State Softwares - Desktop View" width="800">
+</div>
+
+---
+
 ## Sobre
 
 **State Softwares** oferece soluções inteligentes em tecnologia e inteligência artificial para micro e pequenas empresas. Automatize processos, melhore o atendimento e aumente suas vendas com agentes de IA personalizados.
@@ -129,3 +135,7 @@ Postagens recentes:
 - [Termos e Condições](#)
 - [Política de Privacidade](#)
 - [LinkedIn](#)
+
+---
+
+Adicionei a imagem do layout desktop no README.md, posicionando-a logo após os badges das redes sociais e antes da seção "Sobre". A imagem está centralizada e com uma largura de 800px para melhor visualização.

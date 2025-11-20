@@ -63,7 +63,7 @@ const headerActive = function () {
 addEventOnElem(window, "scroll", headerActive);
 
 /**
- * Service Card Flip Effect
+ * Service Card Flip Effect - CORRIGIDO
  */
 
 const serviceCards = document.querySelectorAll(".service-card");
@@ -96,6 +96,13 @@ function initializeServiceCards() {
         <div class="service-description">${description}</div>
       </div>
     `;
+    
+    // Remover links dos títulos para prevenir comportamento padrão
+    const titleLink = card.querySelector('.card-title a');
+    if (titleLink) {
+      titleLink.removeAttribute('href');
+      titleLink.style.cursor = 'pointer';
+    }
   });
 }
 
@@ -106,10 +113,16 @@ if (document.readyState === 'loading') {
   initializeServiceCards();
 }
 
-// Adicionar eventos de clique
+// Adicionar eventos de clique CORRIGIDOS
 addEventOnElem(serviceCards, "click", function(e) {
+  // CORREÇÃO: Prevenir comportamento padrão que causa scroll
+  e.preventDefault();
+  e.stopPropagation();
+  
   // Prevenir clique em links dentro do card
-  if (e.target.closest('a')) return;
+  if (e.target.closest('a') && !e.target.closest('.link-card')) {
+    return;
+  }
   
   // Fechar outros cards abertos
   serviceCards.forEach(otherCard => {
@@ -123,11 +136,14 @@ addEventOnElem(serviceCards, "click", function(e) {
   
   // Feedback tátil para mobile
   if (window.innerWidth <= 768 && 'vibrate' in navigator) {
-    navigator.vibrate(30);
+    navigator.vibrate(10);
   }
+  
+  // CORREÇÃO: Prevenir scroll para o topo
+  return false;
 });
 
-// Fechar cards ao clicar fora
+// Fechar cards ao clicar fora - CORRIGIDO
 document.addEventListener("click", function(e) {
   if (!e.target.closest(".service-card")) {
     serviceCards.forEach(card => {
@@ -135,6 +151,18 @@ document.addEventListener("click", function(e) {
     });
   }
 });
+
+// CORREÇÃO: Prevenir toque padrão nos cards
+addEventOnElem(serviceCards, "touchstart", function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+}, { passive: false });
+
+addEventOnElem(serviceCards, "touchend", function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  this.click();
+}, { passive: false });
 
 // Suporte para teclado
 addEventOnElem(serviceCards, "keydown", function(e) {
@@ -160,4 +188,19 @@ addEventOnElem(serviceCards, "mouseleave", function() {
   if (!this.classList.contains('active') && window.innerWidth > 768) {
     this.style.transform = '';
   }
+});
+
+// CORREÇÃO: Resetar transform quando card é desativado
+serviceCards.forEach(card => {
+  const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.attributeName === 'class') {
+        if (!card.classList.contains('active') && window.innerWidth > 768) {
+          card.style.transform = '';
+        }
+      }
+    });
+  });
+  
+  observer.observe(card, { attributes: true });
 });

@@ -464,10 +464,6 @@ body {
 }
 
 
-
-/*-----------------------------------*\
-  #SERVICE
-\*-----------------------------------*/
 /*-----------------------------------*\
   #SERVICE
 \*-----------------------------------*/
@@ -482,6 +478,17 @@ body {
   border-radius: var(--radius-20);
   position: relative;
   cursor: pointer;
+  min-height: 250px;
+  /* Prevenir seleção de texto */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Melhorar performance no mobile */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .service-card {
@@ -497,43 +504,45 @@ body {
 /* Frente do card (conteúdo original) */
 .service-card .card-front,
 .service-card .card-back {
-  backface-visibility: hidden;
-  transition: all 0.6s ease;
-}
-
-.service-card .card-front {
-  position: relative;
-  z-index: 2;
-}
-
-.service-card .card-back {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: all 0.6s ease;
+  padding: 45px;
+  border-radius: var(--radius-20);
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  padding: 30px;
+  /* Corrigir overflow no iOS */
+  -webkit-overflow-scrolling: touch;
+}
+
+.service-card .card-front {
+  background-color: var(--white);
+  z-index: 2;
+}
+
+.service-card .card-back {
   background: linear-gradient(135deg, hsl(var(--color), 0.95), hsl(var(--color), 0.85));
   color: var(--white);
-  border-radius: var(--radius-20);
   transform: rotateY(180deg);
   text-align: center;
+  overflow: hidden;
+  /* Corrigir renderização no iOS */
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
 
 /* Efeito giratório quando ativo */
 .service-card.active {
   transform: rotateY(180deg);
-}
-
-.service-card.active .card-front {
-  opacity: 0;
-}
-
-.service-card.active .card-back {
-  opacity: 1;
+  /* Prevenir mudança de layout durante animação */
+  position: relative;
+  z-index: 10;
 }
 
 /* Conteúdo da frente */
@@ -546,17 +555,21 @@ body {
   transition: var(--transition-2);
 }
 
-.service-card:is(:hover, :focus-within) .card-icon { 
+.service-card:not(.active):hover .card-icon { 
   transform: rotateY(0.5turn); 
 }
 
 .service-card .card-title { 
   transition: var(--transition-1); 
   color: var(--raisin-black-1);
+  /* Corrigir links no mobile */
+  pointer-events: none;
 }
 
-.service-card .card-title:is(:hover, :focus-within) { 
-  color: hsl(var(--color)); 
+.service-card .card-title a {
+  /* Prevenir comportamento padrão do link */
+  pointer-events: none;
+  text-decoration: none;
 }
 
 /* Conteúdo de trás (descrição) */
@@ -565,6 +578,15 @@ body {
   line-height: 1.6;
   font-weight: var(--fw-500);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  /* Corrigir texto no iOS */
+  -webkit-font-smoothing: antialiased;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 /* Indicador de clique */
@@ -580,6 +602,7 @@ body {
   align-items: center;
   justify-content: center;
   transition: var(--transition-1);
+  pointer-events: none;
 }
 
 .service-card .click-indicator::before {
@@ -608,6 +631,13 @@ body {
   background-color: hsla(var(--color), 0.15);
   text-align: center;
   transition: var(--transition-1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  /* Permitir clique apenas no link card */
+  pointer-events: auto;
 }
 
 .service .link-card:hover {
@@ -639,16 +669,40 @@ body {
 
 /* Responsivo */
 @media (max-width: 768px) {
-  .service-card {
-    padding: 30px;
+  .service-card,
+  .service .link-card {
+    padding: 25px;
+    min-height: 200px;
   }
   
+  .service-card .card-front,
   .service-card .card-back {
-    padding: 20px;
+    padding: 25px;
   }
   
   .service-card .service-description {
     font-size: var(--fs-8);
+    line-height: 1.5;
+    padding: 5px;
+  }
+  
+  /* Corrigir problema de toque no mobile */
+  .service-card {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+}
+
+/* Correções específicas para iOS */
+@supports (-webkit-touch-callout: none) {
+  .service-card .card-back {
+    background: linear-gradient(135deg, hsl(var(--color), 0.98), hsl(var(--color), 0.92));
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+  
+  .service-card .service-description {
+    font-weight: var(--fw-700);
   }
 }
 
@@ -670,14 +724,17 @@ body {
     transform: none;
     opacity: 1;
     margin-top: 20px;
+    display: none;
+  }
+  
+  .service-card.active .card-back {
+    display: block;
   }
   
   .service-card .card-front {
     opacity: 1;
   }
-}
-
-/*-----------------------------------*\
+}/*-----------------------------------*\
   #FEATURE
 \*-----------------------------------*/
 

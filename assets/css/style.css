@@ -468,6 +468,9 @@ body {
 /*-----------------------------------*\
   #SERVICE
 \*-----------------------------------*/
+/*-----------------------------------*\
+  #SERVICE
+\*-----------------------------------*/
 
 .service { background-color: var(--white); }
 
@@ -477,19 +480,63 @@ body {
 .service .link-card {
   padding: 45px;
   border-radius: var(--radius-20);
+  position: relative;
+  cursor: pointer;
 }
 
 .service-card {
   height: 100%;
   background-color: var(--white);
-  padding-block-end: 40px;
   border-block-end: 3px solid transparent;
   box-shadow: var(--shadow-3);
-  transition: var(--transition-1);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
-.service-card:is(:hover, :focus-within) { border-color: hsl(var(--color)); }
+/* Frente do card (conteúdo original) */
+.service-card .card-front,
+.service-card .card-back {
+  backface-visibility: hidden;
+  transition: all 0.6s ease;
+}
 
+.service-card .card-front {
+  position: relative;
+  z-index: 2;
+}
+
+.service-card .card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background: linear-gradient(135deg, hsl(var(--color), 0.95), hsl(var(--color), 0.85));
+  color: var(--white);
+  border-radius: var(--radius-20);
+  transform: rotateY(180deg);
+  text-align: center;
+}
+
+/* Efeito giratório quando ativo */
+.service-card.active {
+  transform: rotateY(180deg);
+}
+
+.service-card.active .card-front {
+  opacity: 0;
+}
+
+.service-card.active .card-back {
+  opacity: 1;
+}
+
+/* Conteúdo da frente */
 .service-card .card-icon {
   max-width: max-content;
   padding: 15px;
@@ -499,15 +546,72 @@ body {
   transition: var(--transition-2);
 }
 
-.service-card:is(:hover, :focus-within) .card-icon { transform: rotateY(0.5turn); }
+.service-card:is(:hover, :focus-within) .card-icon { 
+  transform: rotateY(0.5turn); 
+}
 
-.service-card .card-title { transition: var(--transition-1); }
+.service-card .card-title { 
+  transition: var(--transition-1); 
+  color: var(--raisin-black-1);
+}
 
-.service-card .card-title:is(:hover, :focus-within) { color: hsl(var(--color)); }
+.service-card .card-title:is(:hover, :focus-within) { 
+  color: hsl(var(--color)); 
+}
 
+/* Conteúdo de trás (descrição) */
+.service-card .service-description {
+  font-size: var(--fs-7);
+  line-height: 1.6;
+  font-weight: var(--fw-500);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Indicador de clique */
+.service-card .click-indicator {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid hsla(var(--color), 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-1);
+}
+
+.service-card .click-indicator::before {
+  content: 'i';
+  font-size: 12px;
+  font-weight: bold;
+  color: hsl(var(--color));
+}
+
+.service-card:hover .click-indicator {
+  border-color: hsl(var(--color));
+  transform: scale(1.1);
+}
+
+/* Efeitos de hover adicionais */
+.service-card:not(.active):hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    var(--shadow-3),
+    0 10px 30px hsla(var(--color), 0.2);
+  border-color: hsl(var(--color));
+}
+
+/* Link card (mantém o estilo original) */
 .service .link-card {
   background-color: hsla(var(--color), 0.15);
   text-align: center;
+  transition: var(--transition-1);
+}
+
+.service .link-card:hover {
+  transform: translateY(-5px);
 }
 
 .service .link-card .span {
@@ -528,11 +632,50 @@ body {
   transition: var(--transition-1);
 }
 
-.service .link-card:is(:hover, :focus) ion-icon { color: hsl(var(--color)); }
+.service .link-card:is(:hover, :focus) ion-icon { 
+  color: hsl(var(--color)); 
+  transform: rotate(0deg);
+}
 
+/* Responsivo */
+@media (max-width: 768px) {
+  .service-card {
+    padding: 30px;
+  }
+  
+  .service-card .card-back {
+    padding: 20px;
+  }
+  
+  .service-card .service-description {
+    font-size: var(--fs-8);
+  }
+}
 
-
-
+/* Acessibilidade - reduzir movimento */
+@media (prefers-reduced-motion: reduce) {
+  .service-card,
+  .service-card .card-front,
+  .service-card .card-back,
+  .service-card .card-icon {
+    transition: none;
+  }
+  
+  .service-card.active {
+    transform: none;
+  }
+  
+  .service-card .card-back {
+    position: relative;
+    transform: none;
+    opacity: 1;
+    margin-top: 20px;
+  }
+  
+  .service-card .card-front {
+    opacity: 1;
+  }
+}
 
 /*-----------------------------------*\
   #FEATURE
